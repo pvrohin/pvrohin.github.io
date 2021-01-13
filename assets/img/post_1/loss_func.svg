@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="45.9875 4203.125 665.375 420" width="665.375" height="420">
+  <defs>
+    <clipPath id="artboard_clip_path">
+      <path d="M 45.9875 4203.125 L 711.3625 4203.125 L 711.3625 4623.125 L 45.9875 4623.125 Z"/>
+    </clipPath>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-5 -3 6 6" markerWidth="6" markerHeight="6" color="black">
+      <g>
+        <path d="M -3.7333333 0 L 0 1.4 L 0 -1.4 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.11.3 
+    <dc:date>2019-10-01 13:09:32 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" fill-opacity="1" stroke-opacity="1" stroke="none" stroke-dasharray="none" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1: Layer 2" clip-path="url(#artboard_clip_path)">
+      <title>Layer 2</title>
+      <g id="Line_345">
+        <path d="M 136.6125 4262.7 C 136.6125 4262.7 168.54438 4546.0214 254.6125 4562.438 C 340.68063 4578.855 358.5984 4355.743 440.41273 4320.647 C 522.22705 4285.551 493.1962 4442.363 543.3978 4438.5575 C 593.5994 4434.752 617.6125 4307.2143 617.6125 4307.2143" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      </g>
+      <g id="Line_344">
+        <line x1="169.31693" y1="4345.212" x2="159.6125" y2="4278.7" marker-start="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      </g>
+      <g id="Graphic_343">
+        <path d="M 72.8625 4623 L 681.3625 4623 C 697.93104 4623 711.3625 4609.5685 711.3625 4593 L 711.3625 4233 C 711.3625 4216.4315 697.93104 4203 681.3625 4203 L 72.8625 4203 C 56.29396 4203 42.8625 4216.4315 42.8625 4233 L 42.8625 4593 C 42.8625 4609.5685 56.29396 4623 72.8625 4623 Z" fill="#00fdff" fill-opacity=".126418"/>
+      </g>
+    </g>
+  </g>
+</svg>

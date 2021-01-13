@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'TESLA';
+	src: url(../../assets/fonts/TESLA.woff2) format('woff2'),
+	url(../../assets/fonts/TESLA.woff) format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

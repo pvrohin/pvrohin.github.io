@@ -1,0 +1,90 @@
+/* .navbar.navbar-dark.navbar-expand-md.fixed-top.bg-dark.justify-content-between {
+  opacity: 1.0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(255,255,255);
+}
+
+
+
+.icon.ion-android-mail {
+  font-size: 25px;
+  line-height: 0;
+} */
+
+.home, h1 {
+  text-align: center;
+}
+
+.home h2 {
+  font-size: 25pt;
+  font-weight: 200;
+  padding-top: 10pt;
+  text-align: center;
+}
+
+.posts {
+  background-color: #000;
+  margin-bottom: 60pt;
+  margin-top: 0pt;
+  color: #fff;
+}
+
+.home .links {
+  font-size: 20pt;
+  text-align: center;
+  padding-top: 10pt;
+  color: #000;
+  margin-bottom: 210pt;
+}
+
+.posts h1 {
+  padding-top: 60pt;
+  color: #fff;
+  font-size: 50pt;
+  margin-bottom: 50pt;
+}
+
+.home.icon.ion-ios-compose-outline {
+  font-size: 20pt;
+  line-height: 0;
+}
+
+.grid-item {
+  height: 320pt;
+  padding-top: 0pt;
+  margin: 20pt 50pt 20pt 50pt;
+  text-align: center;
+  background-color: #fff!important;
+  vertical-align: middle!important;
+}
+
+.grid-item h1 {
+  font-size: 25pt;
+  margin: 0pt 10pt 0pt 10pt;
+  padding: 20pt 0 20pt 0;
+  vertical-align: middle!important;
+  margin-bottom: 5pt;
+}
+
+.grid-item a {
+  font-size: 20pt;
+  align-items: end;
+  width: 300pt;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+

@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'GAMECUBEN';
+	src: url(../../assets/fonts/GAMECUBENDualSet.woff2) format('woff2'),
+	url(../../assets/fonts/GAMECUBENDualSet.woff) format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
