@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Sarath's blog</title>
+    <title>Rohin's Portfolio</title>
     <link rel="icon" type="image/png" sizes="240x240" href="assets/img/icon.png">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/BatmanForeverAlternate.css">
@@ -27,122 +27,156 @@
 </head>
 
 <body class="posts_page">
-    <h2 class="text-center" style="margin-right: 10%;margin-left: 10%;font-size: 40px;">Unconventional Intro to Deep Learning</h2><p style="margin-right:20%;margin-left:20%;">There are plenty of awesome blog posts ou there introducing neural networks, the most popular being <a href="http://neuralnetworksanddeeplearning.com/">Micheal Neilsen’s</a> and <a href="http://neuralnetworksanddeeplearning.com/">Christopher Olah’s</a>.
-    My intention is to complement the above resources with a different perspective ,perhaps answser those question which most people would be afraid to ask because its silly<br /></p>
+    <h2 class="text-center" style="margin-right: 10%;margin-left: 10%;font-size: 40px;margin-bottom: 40px;">Resources for deep learning and robotics</h2><p style="margin-right:20%;margin-left:20%;text-align:justify;">When I was first introduced to the field of robotics, I always felt that there was no single blog post or any resource that gave the right guidance for any person who is looking to break into the field of robotics but doesn’t know where to start, or even worse, doesn’t know whether they are on the correct trail or simply wasting time on courses that do not prove effective to the goal that they want to achieve.<br /></p>
 
-<h1 class="text-align:center" style="padding:0;font-size:29pt;color:rgb(0,0,0);font-weight:150">Conventional Programming</h1>
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">Since I am from an electronics background, when I was introduced to robotics, I didn’t have any clue about where to get started. In fact, I did not know that there were different domains in robotics like mobile robotics, aerial robotics etc.  However, I wanted to learn the most important subjects in robotics right from basics. Hence this blog post is intended to help anybody who is from a singular domain like electronics, electrical or mechanical to break into the robotics domain.<br /></p>
 
-<p style="margin-right:20%;margin-left:20%;">Let us start by examining the conventional way of writing code in a programming language such as C++. Supposing we want to code the equation y = 2x ,the structure would be :<br />
+<img src="assets/img/post_1/flowchart.png" style="margin-top:50px; margin-bottom:50px">
+
+<!-- <h1 class="text-align:center" style="padding:0;font-size:29pt;color:rgb(0,0,0);font-weight:150">Conventional Programming</h1> -->
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+    The above flowchart shows the sequence that in my opinion, would lead any student who is new to robotics to gain an intermediate amount of knowledge in it. When I first started with robotics, I didn't have any clue as to which online courses I had to take up and which lecture series I had to see in order to work in projects on robotics. So, I used to binge watch courses and lecture playlists and hence, I decided to write this blog post so that anybody reading this would not have to waste as much time as I did.
+    More importantly beginners are often confused with which course to begin with so as to avoid missing the basics, hence I also provide you with the right order of courses so that you can get started right away without wasting any more time.
+    <br/></p>
     
-<img src="assets/img/post_1/img_1.svg" class="img-fluid" style="height:auto;" />
-</p>
-
-<h1 class="text-align:center" style="padding:0;font-size:29pt;color:rgb(0,0,0);font-weight:150">Machine Learning</h1>
-
-<p style="margin-right:20%;margin-left:20%;">The usual structure for an ML program would be:<br /><img src="assets/img/post_1/img_2.svg" class="img-fluid" style="height:auto;" /></p>
-
-<p style="margin-right:20%;margin-left:20%;">Here we specify the input and output and the algorithm figures out how to predict the output for a given input in the future. Unlike conventional software in which functions are written in the language of code, this function is represented in the language of weights. In fact, Andrej Karpathy calls it Software 2.0. In order to understand weights, let us first examine the line equation.
-</p>
-
-<h1 class="text-align:center" style="padding:0;font-size:29pt;color:rgb(0,0,0);font-weight:150">The Line Equation</h1>
-
-<p style="margin-right:20%;margin-left:20%;">For all those who are already familiar with the line equation, we are just going to make some changes to the naming convention. Don’t worry if you are not, it is just a set of numbers that mathematically describe any line drawn on a 2D plane such as a sheet of paper.For the line y = 2x + 3,it turns out that the parameters slope=2 and intercept=3 are enough to uniquely describe it. What is usually called slope= m is called weight=W here and intercept=e is called bias=b here. But what is the role of the weight and bias in neural networks?. Actually, what is it’s role in the line equation?
-</p>
-
-<p style="margin-right:20%;margin-left:20%;"><b>Slope / Weight:</b> It amplifies the input value to obtain a really close or sometimes exactly the desired value. For instance, given <code class='code-inline'>input=3</code> ,there is no value of W which produces <code class='code-inline'>output=8</code> exactly ,but <code class='code-inline'>W=2.666</code> gives us <code class='code-inline'>output=7.998</code> which is a pretty good approximation but we do have to note that it changes the nature of the function as demonstrated below</p>
-
-<p style="margin-right:20%;margin-left:20%;"><b>Intercept / Bias:</b> In cases such as above ,we need to add a suitable number which allows us to obtain any output value. In out particular case, <code class='code-inline'>(3 x 2) + 2 = 8</code>. </p>
-
-<h1 class="text-align:center" style="padding:0;font-size:29pt;color:rgb(0,0,0);font-weight:150">Deep Learning</h1>
-
-<p style="margin-right:20%;margin-left:20%;">Now let us discuss the actual learning part. Remember that in deep learning, we specify both <code class='code-inline'>input=3</code> and <code class='code-inline'>output=6</code> but the computer has to figure out what weight to multiply and bias to add to obtain the output value. At the beginning, our only go is to initialize the weight as a random number as we have no idea what the actual value is [Of course we know that <code class='code-inline'>W=2</code> for the simple case but remember we want the network to find it out, even for large networks which may contain millions of weights]. Let us consider that we initialize is as <code class='code-inline'>W=23</code>. The network outputs <code class='code-inline'>y = 23 x 3 = 46</code> which is completely wrong. Obviously, we want to modify W in such a way that we obtain y=6 but the question is how to do it.</p>
-
-<p style="margin-right:20%;margin-left:20%;">The immediate concern then becomes why waste time pondering over the problem when you can just do <code class='code-inline'>6 / 3 = 2</code> get it over with?.  It is wrong because it would give us a value that satisfies the equation only for that particular (input, output) pair. There are a bunch of reasons for it: </p>
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+    ROS (Robot Operating System):
+    ROS is the first and foremost tool that beginners have to learn as it is robotic middleware that helps developers to program robotic applications, and is widely used in robotics companies, research centres, and universities. You will be introduced through the creation, the modelling and design of robots, as well as simulating and interfacing them with the ROS framework. You will also use advanced simulation software to use ROS tools that allow robot navigation, manipulation and sensor elaboration.
+    If you follow the below order of courses, I am sure that you'll be the most efficient at learning ROS and most importantly won't be lost in broad documentation.
+    <br/></p>
 
 
-<p style="margin-right:20%;margin-left:20%;"><b>My favourite interpretation:</b> Consider studying a single question and answer for an algebra exam and trying to answer all other question using only that knowledge. Rest assured that we would answer that particular question perfectly but all other answers would be completely disastrous. By studying a variety of questions and answers, we would able to correctly answer not all those questions which we had studied but also totally new questions to some extent because we could build certain mental relationships between individual questions and answers since they were regarding the same general subject. If you had studied questions from totally different topics such as algebra and geology, you wouldn’t be able to answer any new algebra question using the knowledge we gathered from the geology question. In the same way, we train neural networks not on a single example but a range of different examples belonging to the same category [lots of audio recordings for voice detection, lots of photos for image recognition etc] because we care about is the prediction and generalization for new real-world examples. If we just wanted to predict correctly only the examples it was trained with, we then the whole idea of a neural network could be replaced by a series of if statements. </p>
+    <ol style="margin-right:20%;margin-left:20%;text-align:justify;">
+        <li>Course 1: ROS for beginners 1, by Anis Koubaa</li>
+        <li>Course 2: ROS for beginners 2, by Anis Koubaa</li>
+        <li>ROS for Absolute Beginners, by Lentin Joseph</li>
+        <li>Mastering ROS for robotics programming, by Lentin Joseph</li>
+    </ol>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Other optional/extra resources:
+    </p>    
+    <ul style="margin-right:20%;margin-left:20%;text-align:justify;">
+        <li>ROS robotics projects by Lentin Joseph.</li>
+        <li>Learning Robotics using Python by Lentin Joseph.</li>
+    </ul>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        If you follow these resources in the correct order you will become comfortable in working with ROS and with some practice in debugging errors, you will be able to build various robotic simulations and model custom robots too.  
+        <br/>
+    </p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Machine Learning:
+        I've seen many of my friends who want to get started with machine learning, misled by various people and resources who are inexperienced and suggest that they learn it without the underlying mathematics or just the front-end programming frameworks. Machine Learning has four main components.
+        a) Statistics
+        b) Linear Algebra
+        c) Calculus
+        d) Probability
+        It's after the math stuff that the programming stuff comes into picture. In fact, it's the mathematical equations that we derive, that are programmed using Python, NumPy etc so that we can perform computations on large data, in other words a dataset. After trying out a lot of courses, I've listed down the best ones out there that you have to follow in the same order so that you start from the basics and increase the complexity as you move through. First, let's make sure that you are good with the mathematics for machine learning.
+        <br/></p>
 
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        1) 10-606 and 10-707 Math background for ML ' CMU Geoff Gordon. 
+        2) Freshman year Statistics, Calculus, Linear Algebra and Probability would be sufficient to go forward with the machine learning courses.
+        3) For a more intuitive way of understanding calculus and linear algebra, you can watch the 3Blue1Brown Playlist on YouTube. 
+        <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;"><b>This one’s good too:</b> The network might even learn the wrong representation. Assume that all goes well and the network does learn that <code class='code-inline'>W=2</code> from the data <code class='code-inline'>input=3</code> and <code class='code-inline'>output=6</code>. However, if we give <code class='code-inline'>input=4 </code>and ask the network to predict the output, there is a good chance it might give <code class='code-inline'>output=6</code> instead of the expected <code class='code-inline'>output=8 </code>because the representation it would have learned might be <code class='code-inline'>y = 2 + x</code> instead of <code class='code-inline'>y=2x</code>.The network isn’t at fault because both of these representations are correct for <code class='code-inline'>input=3</code> and <code class='code-inline'>output=6</code>. We are at fault for not providing sufficient training data. </p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Machine Learning:
+        4) Stanford CS229 Machine Learning Classroom Lectures by Andrew NG.
+        5) Machine Learning Course on Coursera ' it's a less intense version of CS229 with programming exercises to be done with Octave/ MATLAB which is perfect for beginners.  
+        <br/></p>
 
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        The above resources would be sufficient for a beginner an introduction to machine learning and the above resources have to be followed in the same order. Also keep in mind that machine learning provides the basics for deep learning and Computer Vision, so do make sure that you understand all the concepts clearly.
+        <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;"><b>Multiple weights :</b> In the test case discusses above, we have considered only one weight. In all practical cases , neural nets have multiple weights W1, W2 , W3 etc because we want to input data to spread out through the network. To make it more concrete, let us consider out audio processing example. We mentioned earlier that the most important feature frequency has to be specified by hand in old ML methods but deep learning automatically determines that it is the best feature.</p>
+        <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Deep Learning:
+        Now that you have completed Machine Learning, you are now ready to master the concepts of Deep Learning and apply them to any real-world problems or your projects. Deep Learning involves some heavy lifting with linear algebra and calculus; hence you should not get started with any of the advanced courses which would simply discourage you or you would get stuck during the course. The order of courses that you should follow are as follows
+        <br/></p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        1)Deep Learning Specialization by Andrew NG on Coursera ' it has 5 courses and it is a great course for beginners who are fresh out of machine learning.
+        2)NYU Deep Learning Course ' By Yan Le Cunn
+        3)CS 231n CNN's for Visual Recognition' Andrej Karpathy
+        <br/></p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Other resources:
+        Michael Nielson's blog
+        Neural Networks Demystified ' Stephen Welch (Welch labs).
+        Chris Colah's blog
+        Grokking Deep Learning ' by Andrew Trask
+        Deep Learning ' Ian Goodfellow, Yoshua Bengio et al.
+    <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;">A DJ uses instruments which have a variety of options to control each feature of the music output. Similarly, we have multiple weights in the neural net whose magnitudes tell us how important each input feature is. Multiple weights allow learning of complex function representations which wouldn’t be possible with just one weight, much like a guitar has 6 strings to allow for a range of sound outputs which wouldn’t be possible with just one string.</p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Computer Vision:
+        You will be introduced to Computer Vision in the Deep Learning Specialization and taken in for a ride in Andrej Karpathy's course, where you will learn deep learning along with computer vision. However, there are separate state of the art resources available for free out there which will make you well versed in purely Computer Vision algorithms and methods. Let's walk you through it.
+    <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;"><br>
-<div class="imgcap">
-<div style="text-align:center;">
-<img src="assets/img/post_1/img_4.svg" class="img-fluid" style="height:auto;">
-<div class="thecap"><h5>One input and multiple weights</h5></div>
-</div>
-</div>
-<br></p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Computer Vision - William Hoff Colorado School of Mines
+        Computer Vision ' Mubarak Shah UCF
+    <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;"><b>Multiple layers:</b> Theoretically, sufficient number weights in a single layer are enough to learn any function, but remember that our purpose is not to have a network finely tuned for any specific example. If we want any sort of generalization, we have to make sure that the network learns multiple layers of representations. Consider that we are building an image classifer. We could train a single layer network to learn that function mapping any single input image to a single output category but such a network could never generalize to a new input image. To make things more concrete, consider preparing for a math exam. You are absolutely sure of the question coming for 10 marks but have no idea of the associated topic. The solution to such a problem would have a lot of steps, and you decide to memorize each one of them without learning any of the underlying concepts. If the same question comes, well and good but any other question would most probably yield zero marks. However, if you had understood the theory behind each step and learned to solve it sequentially, you would have been easily able to answer any question of the same type.</p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Other resources:
+        OpenCV Documentation ' available online.
+        Computer Vision ' Jayanta Mukopadhyay
+    <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;"><br>
-<div class="imgcap">
-<div style="text-align:center;">
-<img src="assets/img/post_1/img_5.svg" class="img-fluid" style="height:auto;">
-<div class="thecap"><h5>One input and multiple weights</h5></div>
-</div>
-</div>
-<br>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Reinforcement Learning:
+        Reinforcement Learning has a pre-requisite of ML and DL, so make sure that you complete those before coming to this. RL is an optional track which has tremendous applications in robotics and control that you could take up if you're interested in working with learning algorithms that can learn on their own, by interacting with the environment and making continuous corrections to their behaviour to obtain the desired output. I will provide the correct order of resources below.
+    <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;"><b>Multiple inputs:</b> Since input data rarely comes as a single feature in the real world, the network will need several inputs to describe it.<br><br>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        1)RL specialization - Coursera
+        2)RL ' David Silver
+        3)CS 285 Deep RL ' Sergey Levine (this is the best course out there). 
+    <br/></p>
 
-<i>Audio files:</i> Usually come in 128 or more amplitude channels. <br>
-<i>Image files:</i> Each image file is a matrix of pixels ,a 720p image has 720 x 1280 = 12280 pixels<br><br>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Robot Kinematics and Dynamics:
+        Robot Kinematics and Dynamics is the beginning towards designing manipulation and understanding the physics of robots, more importance is provided towards manipulators, forward and inverse kinematics, and dynamics. Anybody who wants to enter the field of robotics simply cannot ignore or avoid this topic, as it provides a jumpstart into any other sub domain of robotics that you might want to go into later. 
+        CMU 16 308 Robot Kinematics and Dynamics by Howie Choset along with the supplementary book is the best resource for this topic, in my opinion. I have tried other courses, trust me, this one resource is more than enough for you to break into the topic. In later stages, you can refer to other resources to increase the complexity of the topic.
+    <br/></p>
 
-Neural nets need to have as many numbers of inputs as the number of features in the input data. Also, the inputs need to be connected to each weight</p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Mobile Robotics:
+        One among the subdomains of robotics, and in fact one of the tremendously popular ones both in terms of commercial usage and cutting-edge research is 'Mobile Robotics'. As you might have guessed by the name itself, it involves the study of robots which move or traverse on land. It is a very vast area of study and hence, to have a broad idea and to master the basics of this topic, follow the courses in the same order.
+    <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;"><br>
-<div class="imgcap">
-<div style="text-align:center;">
-<img src="assets/img/post_1/img_6.svg" class="img-fluid" style="height:auto;">
-<div class="thecap"><h5>Multiple inputs and multiple weights</div>
-</div>
-</div>
-<br>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        1) Introduction to Mobile Robotics Uni Freidburg
+        2) Robot Mapping Uni Freidburg
+        3) Autonomous Mobile Robots ' Edx ETH Zurich
+        After you finish these courses along with the programming assignments, you will be well prepared to carry on research or do a project in this domain.
+    <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;"><b>Remember where we left off:</b> We initialized the weight as random number W=23 and wanted the network to learn that the weight is actually <code class='code-inline'>W=2</code> from given <code class='code-inline'>input=3</code> and <code class='code-inline'>output=6</code>. Such a model can accurately predict the output for any new input but how do we get it to learn? </p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Aerial Robotics:
+        Congratulations! If you have reached till here, almost 90 percent of you will probably know how to proceed further with studying robotics, and this will be the last set of courses that I recommend to you. As the name suggests, Aerial robotics involves the study of flying, manoeuvring and hovering robots. Starting right from the Kinematic equations all the way till the control algorithms, everything has to be specially designed for these aerial robots. These are the courses which you would have to follow in the right order to get a good outlook on aerial robotics as it's a really interesting domain to work in.
+    <br/></p>
 
-<h1 class="text-align:center" style="padding:0;font-size:29pt;color:rgb(0,0,0);font-weight:150">Loss Function</h1>
-    
-<p style="margin-right:20%;margin-left:20%;"><i>Failures are the stepping stones to success</i> is one of the most common proverbs out there. In fact, neural networks need to make a series of failures before we can get them to work. Consider that we want to play a game on the mobile phone but do not know what the controls are. We might press random controls to see what happens at the beginning, which may lead to failure in the game but we eventually figure out the correct controls. Putting it another way, we need to calculate how far apart the predicted value and actual output were. In ML terminology, we call this loss and something used to measure the loss is called loss function. Let u see how we might design a basic loss loss_function:</p>
+    <p style="margin-right:20%;margin-left:20%;text-align:justify;">
+        Vijay Kumar Robotics specialization in Coursera and Edx will provide a good introduction to aerial robotics.
+    <br/></p>
 
-<p style="margin-right:20%;margin-left:20%;">The simplest and most intuitive way to find the difference between the actual and predicted value is to calculate <code class='code-inline'>Loss = actual - predicted.</code>The problem with this function is that it outputs negative loss when <code class='code-inline'>actual &lt; predicted</code>. However, we consider only the magnitude of the loss because considering whether the sign does not add any extra infrmation .To make this right, we modify the function as <code class='code-inline'>L = (actual - predicted)^2.</code> Squaring not only results in positive loss always but also amplifies the loss. </p>
-    
-<p style="margin-right:20%;margin-left:20%;"><br>
-<div class="imgcap">
-<div style="text-align:center;">
-<img src="assets/img/post_1/loss_func.svg" class="img-fluid" style="height:auto;">
-<div class="thecap"><h5>Loss function.svg</div>
-</div>
-</div>
-<br>
-    
-<p style="margin-right:20%;margin-left:20%;">Now we get a concrete measure of how well the network performs, and the question now becomes how to decrease the loss. Now is the right time to get some insights into the <i>gradient</i> of a function. Before that, let us examine the derivative of a function.</p>
-
-    <div class="footer-basic">
-        <h1>About Me</h1>
-        <p class="text-center" style="margin:12px;margin-top:20px;margin-bottom:35px;color:rgb(0,0,0);margin-right:20%;margin-left:20%;font-size:14pt;">I am an undergraduate researcher at the Artifical Intelligence and Mobile Robotics lab at PSG College of Technology. I am in my final year of BE Electronics and Communication Engineering.</p>
+    <div class="footer-basic" style="background: #000;">
+        <h1 style="color: #ffffff;">About Me</h1>
+        <p class="text-center" style="margin: 12px;margin-top: 20px;margin-bottom: 35px;color: #ffffff;margin-right: 20%;margin-left: 20%;font-size: 14pt;">I am an undergraduate researcher at the Artifical Intelligence and Mobile Robotics lab at PSG College of Technology. I am in my final year of BE Electronics and Communication Engineering at PSG Institute of Technology and Applied Research</p>
         <footer>
-            <div class="social" style="margin-top:-1em;"><a href="pvrohin@gmail.com"><i class="icon ion-android-mail" style="color:rgb(0,0,0);font-size:30pt;"></i></a><a href="https://github.com/pvrohin"><i class="fa fa-github" style="font-size: 30pt;color: rgb(0,0,0);"></i></a><a href="https://www.linkedin.com/in/rohin-siddhartha-019071183/"><i class="icon ion-social-linkedin" style="color:rgb(0,0,0);font-size:30pt;"></i></a></div>
+            <div class="social" style="margin-top:-1em;"><a href="pvrohin@gmail.com"><i class="icon ion-android-mail" style="color: rgb(255,255,255);font-size: 30pt;"></i></a><a href="https://github.com/pvrohin"><i class="fa fa-github" style="font-size: 30pt;color: rgb(255,255,255);"></i></a><a href="https://www.linkedin.com/in/rohin-siddhartha-019071183/"><i class="icon ion-social-linkedin" style="color: rgb(255,255,255);font-size: 30pt;"></i></a></div>
         </footer>
     </div>
-    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark navbar--apple">
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark align-items-center navbar--apple">
         <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
             <div class="collapse navbar-collapse" id="menu" style="padding-right: 40px;padding-left: 40px;margin-top: -4px;">
-                <ul class="nav navbar-nav d-lg-flex flex-grow-1 justify-content-between align-items-lg-center">
+                <ul class="navbar-nav d-lg-flex flex-grow-1 justify-content-between align-items-center align-items-lg-center">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="posts.html">Posts</a></li>
                     <li class="nav-item"><a class="nav-link" href="projects_list.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://drive.google.com/file/d/1H8Yl4lj4jva_7CbiYIXno0Xv8dd9sm-J/view?usp=sharing" target="_blank">CV</a></li>
-                    <li class="nav-item"><a class="nav-link" href="car_new.html">Autonomous Car</a></li>
-                    <li class="nav-item d-none d-xs-block d-md-block"><a class="nav-link" href="https://github.com/pvrohin" target="_blank"><i class="icon ion-social-github d-lg-flex justify-content-lg-center align-items-lg-center" style="font-size: 18px;"></i></a></li>
-                    <li class="nav-item d-none d-xs-block d-md-block" style="padding-top: 1px;"><a class="nav-link" href="pvrohin@gmail.com" target="_blank"><i class="icon ion-android-mail" style="font-size: 17px;"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://drive.google.com/file/d/1H8Yl4lj4jva_7CbiYIXno0Xv8dd9sm-J/view?usp=sharing" target="_blank">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </div>
