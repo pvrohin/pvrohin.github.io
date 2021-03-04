@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Rohin's Portfolio</title>
+    <link rel="icon" type="image/png" sizes="240x240" href="assets/img/icon.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/BatmanForeverAlternate.css">
+    <link rel="stylesheet" href="assets/css/GAMECUBEN.css">
+    <link rel="stylesheet" href="assets/css/TESLA.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/Article-List.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Navbar---Apple-1.css">
+    <link rel="stylesheet" href="assets/css/Projects-Clean.css">
+    <link rel="stylesheet" href="assets/css/Projects-Horizontal.css">
+    <link rel="stylesheet" href="assets/css/Social-Icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Team-Clean.css">
+<!-- Global site tag (gtag.js) - Google Analytics --> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135016153-3"></script> <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());    gtag('config', 'UA-135016153-3'); </script>
+
+<link rel="icon" href="icon.png" sizes="32x32">
+</head>
+
+<body class="posts_page">
+    <h2 class="text-center" style="margin-right: 10%;margin-left: 10%;font-size: 40px;margin-bottom: 40px;height: 100px;">How far along are we in realizing truly intelligent robots?&nbsp;<br><br><br><br><br><br><br><br><br></h2><p style="margin-right:20%;margin-left:20%;text-align:justify;">
+Just have a look at this.
+<br /></p>
+
+<img src="assets/img/post_2/enthiran.gif" style="margin-top:50px; margin-bottom:50px">
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+This clip is from an Indian film called “Enthiran” which was released in 2012. The movie is about a scientist who builds a truly intelligent humanoid which is capable of doing all the tasks that a human could. Initially, the robot is programmed with the laws of robotics but later learns to defy those laws and poses a threat to human existence. It was a huge commercial success and went on to receive a number of awards for its VFX, art design etc.
+<br /></p>
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+Also check this out
+<br /></p>
+
+<img src="assets/img/post_2/irobot.gif" style="margin-top:50px; margin-bottom:50px">
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+Most of you reading this might be familiar with this clip. It’s from a movie called “I Robot” which was released in 2004. This movie is one of the best movies with “robotics” as its core theme.
+<br /></p>
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+When I saw both these movies, I was in middle school, and as a kid with absolutely no knowledge about the field of robotics, I was filled with awe throughout the entire duration. I had imagined then, that in another 10 to 15 years, when I grow up, humans would share their world with robots just like how it was shown in these movies. At that exact moment, I didn’t have enough evidence to think of the question How far along are we in realizing truly intelligent robots?
+<br /></p>
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+Now as this question comes to mind, I honestly just feel like laughing out loud. But for me it is also one of those examples that make me sad about the outlook for AI, Computer Vision in Robotics. What would it take for a robot (which is just basically just a computer) for instance, to fight these enemy robots as shown from the “I Robot” clip above? For the non-STEM folk, I challenge you to think explicitly of all the pieces of knowledge that have to fall in place for it to make sense. Here is my short attempt:
+<br /></p>
+
+<ol style="margin-right:20%;margin-left:20%;text-align:justify;">
+        <li>The good robot, Sonny has to analyze the scene in front of it to detect the various objects present in it.</li>
+        <li>Now it recognizes two robots in the scene, probably it used the Mask R-CNN algorithm to perform instance segmentation.</li>
+        <li>Next, Sonny has to determine the exact 6D pose in real world frame, of the enemy robots (X, Y, Z, Θ, ɸ, Ψ) in order to approach them.</li>
+        <li>It has to make a decision as to which robot it has to approach first.</li>
+        <li>It has to execute a series of complex kinematic manoeuvres from its limbs and leg joint in order to provide the necessary thrust to lift itself off the ground.</li>
+        <li>Then in order to punch the bad robot once, the robot has to perform a series of Inverse Kinematics algorithms so as to determine what would be the joint angles of the robot arms.</li>
+        <li>Further there would be a lot of complex dynamics problems and intelligent control algorithms would also be involved in this task.</li>
+        <li>After Sonny has done the above steps to land the first punch on the enemy robot, now it has to defend itself from the counter attack, this is where Reinforcement Learning comes in.</li>
+        <li>Sonny has to make decisive actions based on maximizing positive reward, one of the fundamental principles of Deep RL.</li>
+</ol>
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+Now for the cherry on the cake, all these steps have to be performed in real time using powerful compute hardware. I could write in length about how each of the above steps work, but that is not the point of the blog.
+<br /></p>
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+Movies like these are made purely out of the director’s imagination and people who watch the movie tend to often misinterpret the job of roboticists. In fact, any roboticist who is reading this blog might be literally in tears. Non-STEM people who watch such movies are often led into believing that the robots that are shown in movies are very close to becoming a reality. Our family members, friends tend to ask us when are we going to build the next Sonny. (Yes, I feel you). The purpose of this blog is to give the general audience a brief intuition into how extremely meticulous the job of roboticists is. Building each sub system of the robot is by itself a tremendous achievement, imagine the complexity of putting it all together to build a humanoid like Sonny.
+<br /></p>
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+Truly intelligent humanoids like Sonny or Chitti from Enthiran, have the ability to think and act on their own. Yes, Deep Learning comes under the subdivision called “Supervised Learning”, where we train our models with existing datasets. But in this case, we use “Unsupervised Learning” where the robot is expected to learn from experience. For instance, when a baby is just starting to walk, it doesn’t know how to, however it trips, falls, tries to get up and eventually after some time, it is able to walk. Unsupervised Learning works in a similar way, where our models learn from their mistakes, they have a pre-defined reward function, which runs towards a negative quantity if the robot performs the wrong action and runs towards a positive quantity when the robot performs the desired action. Hence, the optimization algorithm would be defined as “Maximize the reward function”. Easier said than done xD, this sub division of Machine Learning contains some of the most complicated math that you might’ve ever seen in your life.
+<br /></p>
+
+
+<p style="margin-right:20%;margin-left:20%;text-align:justify;">
+Thinking about the complexity and scale of the problem further, a seemingly unavoidable conclusion for me is that we may also need embodiment, and that the only way to build robots that can interpret scenes like we humans do is to allow them to get exposed to all the years  of (structured, temporally coherent) experience we have,  ability to interact with the world, and some magical active learning/inference architecture that I can barely even imagine when I think backwards about what it should be capable of, the complexity is simple mind -boggling. I hate to say it but the state of CV, AI and robotics, when we consider this task, and when we think about how we can ever go from here to there. The road ahead is long, uncertain, unclear and foggy. In any case, we are very, very far and this depresses me. We will have to continue innovating , what else is the way forward?  
+<br /></p>
+
+    <div class="footer-basic" style="background: #000;">
+        <h1 style="color: #ffffff;">About Me</h1>
+        <p class="text-center" style="margin: 12px;margin-top: 20px;margin-bottom: 35px;color: #ffffff;margin-right: 20%;margin-left: 20%;font-size: 14pt;">I am an undergraduate researcher at the Artifical Intelligence and Mobile Robotics lab at PSG College of Technology. I am in my final year of BE Electronics and Communication Engineering at PSG Institute of Technology and Applied Research</p>
+        <footer>
+            <div class="social" style="margin-top:-1em;"><a href="pvrohin@gmail.com"><i class="icon ion-android-mail" style="color: rgb(255,255,255);font-size: 30pt;"></i></a><a href="https://github.com/pvrohin"><i class="fa fa-github" style="font-size: 30pt;color: rgb(255,255,255);"></i></a><a href="https://www.linkedin.com/in/rohin-siddhartha-019071183/"><i class="icon ion-social-linkedin" style="color: rgb(255,255,255);font-size: 30pt;"></i></a></div>
+        </footer>
+    </div>
+    <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark align-items-center navbar--apple">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
+            <div class="collapse navbar-collapse" id="menu" style="padding-right: 40px;padding-left: 40px;margin-top: -4px;">
+                <ul class="navbar-nav d-lg-flex flex-grow-1 justify-content-between align-items-center align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="posts.html">Posts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects_list.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://drive.google.com/file/d/1YZgUs0BbDxpGK1ULR7S7H62X5E0-lhQ1/view?usp=sharing" target="_blank">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="assets/js/Navbar---Apple.js"></script>
+</body>
+
+</html>
