@@ -1,11 +1,45 @@
-- name: HTML5/CSS3
-  percentage: 90
-  color: danger
-
-- name: Go
-  percentage: 80
-  color:
+# Programming & technical skills (from LinkedIn & GitHub profile)
 
 - name: Python
-  percentage: 70
+  percentage: 95
+  color: primary
+
+- name: C++
+  percentage: 85
   color: secondary
+
+- name: ROS / Robot Operating System
+  percentage: 90
+  color: success
+
+- name: PyTorch
+  percentage: 85
+  color: danger
+
+- name: TensorFlow
+  percentage: 80
+  color: info
+
+- name: OpenCV
+  percentage: 88
+  color:
+
+- name: Deep Learning & Computer Vision
+  percentage: 88
+  color: primary
+
+- name: Gazebo (Simulation)
+  percentage: 82
+  color: secondary
+
+- name: Linux & Git
+  percentage: 90
+  color: success
+
+- name: scikit-learn / pandas
+  percentage: 80
+  color: info
+
+- name: Arduino / Embedded
+  percentage: 75
+  color:

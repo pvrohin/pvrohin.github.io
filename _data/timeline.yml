@@ -1,17 +1,44 @@
-- title: Student, Harvard CS
-  from: 2014
-  to: 2018
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+# Timeline based on https://www.linkedin.com/in/rohin-siddhartha-019071183/
+# Experience: latest first. Education: latest first.
 
-- title: Software Engineer, Google, UK
-  from: 2018
-  to: present
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+experience:
+  - title: Vision Application Specialist, Atlas Copco
+    from: 2024
+    to: present
+    description: Full-time role in machine vision applications. Engineering and Technical, Specialist level. Auburn Hills, Michigan, US.
+
+  - title: Vision Intern, Atlas Copco
+    from: 2023
+    to: 2024
+    description: One-year vision internship in Engineering and Technical at Atlas Copco. Auburn Hills, Michigan, US.
+
+  - title: Intern, PaceRobotics®
+    from: 2022
+    to: 2022
+    description: Robotics engineering intern. Worked on Gazebo simulations of mobile robot platforms, mapping and navigation trials, and actuator control. Bengaluru, Karnataka, India.
+
+  - title: Research Intern, Indian Institute of Technology Palakkad
+    from: 2020
+    to: 2021
+    description: Research intern in the collaborative project between IIT Kanpur and IIT Palakkad. Worked on visual perception and deep learning for an autonomous fruit harvesting robot; used PyBullet and Gazebo, Python and ROS.
+
+  - title: Project Intern, Gas Turbine Research Establishment (DRDO)
+    from: 2019
+    to: 2019
+    description: One-month project internship in project management at GTRE, Defence R&D Organisation, Bangalore.
+
+  - title: Research Assistant, Centre for Mobile Robotics, PSG College of Technology
+    from: 2018
+    to: 2020
+    description: Research in mobile robotics at the Centre for Mobile Robotics, Coimbatore, Tamil Nadu, India.
+
+education:
+  - title: M.S. Mechatronics, Robotics & Automation, Worcester Polytechnic Institute
+    from: 2022
+    to: 2024
+    description: Master's degree. Worcester, Massachusetts, US. Focus on mobile robotics, computer vision, deep learning, and motion planning.
+
+  - title: B.E. Electronics and Communications, PSG Institute of Technology and Applied Research
+    from: 2017
+    to: 2021
+    description: Bachelor of Engineering. Focus on electronics and communications systems.
