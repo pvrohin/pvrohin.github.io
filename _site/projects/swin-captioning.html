@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SWIN Transformer Image Captioning">
+  <meta property="og:description" content="End-to-end image captioning using a SWIN Transformer visual encoder with refining encoder layers and a 6-layer transformer decoder, trained on Flickr8k.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/pvrohin/SWIN-Transformer-for-Image-Captioning/master/model.png">
+
+  <title>SWIN Transformer Image Captioning</title>
+  <meta name="description" content="End-to-end image captioning using a SWIN Transformer visual encoder with refining encoder layers and a 6-layer transformer decoder, trained on Flickr8k.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/portfolYOU/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/portfolYOU/assets/css/style.css">
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/portfolYOU/"><h5><b>Rohin Siddhartha</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/portfolYOU/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/about/">About</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/skills/">Skills</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <div style="text-align: center;"><h1>SWIN Transformer for Image Captioning</h1></div>
+
+<p>This project implements an <strong>end-to-end image captioning architecture</strong> that generates natural language descriptions of images by combining a <strong>SWIN Transformer visual encoder</strong> with a <strong>transformer decoder</strong>, built from scratch in TensorFlow/Keras and trained on the <strong>Flickr8k</strong> dataset.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Model Architecture</h2>
+
+<div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/pvrohin/SWIN-Transformer-for-Image-Captioning/master/model.png" alt="Model architecture" style="max-width: 700px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+</div>
+
+<hr />
+
+<h2 style="text-align: center;">Architecture Components</h2>
+
+<p><strong>SWIN Transformer Encoder</strong></p>
+
+<p>Input images are resized to 384×384 and processed by a <strong>Shifted Window Transformer</strong> — a hierarchical vision transformer that partitions the image into non-overlapping windows and applies self-attention within each window. Shifted windows in alternating layers allow cross-window information flow, building a multi-scale feature pyramid.</p>
+
+<p><strong>Refining Encoder Layers</strong></p>
+
+<p>Three additional encoder layers follow the SWIN backbone. Each combines:</p>
+<ul>
+  <li><strong>Local patch features</strong> from the SWIN output</li>
+  <li><strong>Global image features</strong> aggregated via pooling</li>
+  <li><strong>Cross-attention</strong> between local and global representations</li>
+</ul>
+
+<p>This refines the visual features before they are passed to the decoder.</p>
+
+<p><strong>Prefusion Layer</strong></p>
+
+<p>Before decoding, word embeddings are fused with the global visual context via a <strong>Prefusion Layer</strong>, ensuring the decoder is conditioned on the image from the very first token.</p>
+
+<p><strong>Transformer Decoder</strong></p>
+
+<p>Six decoder layers with:</p>
+<ul>
+  <li><strong>Masked self-attention</strong> over the previously generated caption tokens</li>
+  <li><strong>Cross-attention</strong> over the encoded visual features</li>
+  <li>Feed-forward sublayers with residual connections and layer normalization</li>
+</ul>
+
+<p><strong>Training</strong></p>
+
+<p>The model is trained with the <strong>Adam optimizer</strong> using a warmup + decay learning rate schedule, minimizing cross-entropy loss over the token predictions on Flickr8k caption-image pairs.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Summary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Visual encoder</td>
+      <td>SWIN Transformer (384×384 input)</td>
+    </tr>
+    <tr>
+      <td>Feature refinement</td>
+      <td>3 cross-attention refining encoder layers</td>
+    </tr>
+    <tr>
+      <td>Decoder</td>
+      <td>6-layer transformer with masked self-attention</td>
+    </tr>
+    <tr>
+      <td>Dataset</td>
+      <td>Flickr8k (8,000 images, 5 captions each)</td>
+    </tr>
+    <tr>
+      <td>Framework</td>
+      <td>TensorFlow ≥2.8.0, Keras</td>
+    </tr>
+    <tr>
+      <td>Optimizer</td>
+      <td>Adam with warmup + decay schedule</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/SWIN-Transformer-for-Image-Captioning" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Rohin Siddhartha</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.behance.net/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1769ff'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-behance fa-1x"></i>
+    </a><a class="social mx-1"  href="mailto:pvrohin@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.facebook.com/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#3b5998'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-facebook fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/pvrohin"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/rohin-siddhartha-019071183"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a><a class="social mx-1"  href="https://medium.com/@your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#00ab6c'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-medium fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.twitter.com/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1da1f2'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-twitter fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

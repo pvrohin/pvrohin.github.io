@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Autonomous Mobile Robot">
+  <meta property="og:description" content="Household autonomous mobile robot built on TurtleBot3 with ROS — featuring teleoperation and SLAM-based autonomous mapping and navigation.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/pvrohin/Autonomous-Mobile-Robot/master/SLAM_simulation.png">
+
+  <title>Autonomous Mobile Robot</title>
+  <meta name="description" content="Household autonomous mobile robot built on TurtleBot3 with ROS — featuring teleoperation and SLAM-based autonomous mapping and navigation.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/portfolYOU/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/portfolYOU/assets/css/style.css">
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/portfolYOU/"><h5><b>Rohin Siddhartha</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/portfolYOU/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/about/">About</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/skills/">Skills</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <div style="text-align: center;"><h1>Autonomous Mobile Robot</h1></div>
+
+<p>This project develops an <strong>autonomous mobile robot for household use</strong> built on the <strong>TurtleBot3</strong> platform using <strong>ROS (Robot Operating System)</strong>. The system supports two modes of operation: <strong>teleoperation</strong> for remote manual control, and <strong>SLAM-based autonomous navigation</strong> for self-directed map-building and goal-seeking in indoor environments.</p>
+
+<hr />
+
+<h2 style="text-align: center;">SLAM Simulation</h2>
+
+<div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/pvrohin/Autonomous-Mobile-Robot/master/SLAM_simulation.png" alt="SLAM simulation" style="max-width: 700px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+</div>
+
+<hr />
+
+<h2 style="text-align: center;">Teleoperation</h2>
+
+<div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/pvrohin/Autonomous-Mobile-Robot/master/Screenshot%202021-03-02%2016.55.58_cropped.png" alt="Teleoperation interface" style="max-width: 700px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+</div>
+
+<hr />
+
+<h2 style="text-align: center;">System Overview</h2>
+
+<p><strong>SLAM (Simultaneous Localization and Mapping)</strong></p>
+
+<p>The robot uses the <code class="language-plaintext highlighter-rouge">turtlebot3_slam</code> package to build a 2D occupancy map of its environment in real time using LiDAR scan data. As the robot explores, it simultaneously estimates its own pose within the growing map — the classical chicken-and-egg problem of mobile robotics. The resulting map is used by the navigation stack for autonomous path planning.</p>
+
+<p><strong>Autonomous Navigation</strong></p>
+
+<p>Once a map is available, the <code class="language-plaintext highlighter-rouge">turtlebot3_navigation</code> package enables the robot to receive goal poses and autonomously plan and execute collision-free paths. The ROS navigation stack combines:</p>
+<ul>
+  <li><strong>Global planner</strong> (Dijkstra/A*) for an initial path on the occupancy map</li>
+  <li><strong>Local planner</strong> (DWA) for real-time obstacle avoidance during execution</li>
+  <li><strong>AMCL</strong> (Adaptive Monte Carlo Localization) for continuous pose estimation within the known map</li>
+</ul>
+
+<p><strong>Teleoperation</strong></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">turtlebot3_teleop</code> package provides keyboard-based manual control, allowing direct velocity commands to be sent to the robot’s wheels for testing and data collection.</p>
+
+<hr />
+
+<h2 style="text-align: center;">ROS Package Structure</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Function</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">turtlebot3_bringup</code></td>
+      <td>Hardware initialization</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">turtlebot3_description</code></td>
+      <td>URDF robot model</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">turtlebot3_slam</code></td>
+      <td>LiDAR-based SLAM</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">turtlebot3_navigation</code></td>
+      <td>Autonomous path planning + AMCL</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">turtlebot3_teleop</code></td>
+      <td>Keyboard teleoperation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">turtlebot3_simulations</code></td>
+      <td>Gazebo simulation environments</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/Autonomous-Mobile-Robot" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Rohin Siddhartha</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.behance.net/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1769ff'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-behance fa-1x"></i>
+    </a><a class="social mx-1"  href="mailto:pvrohin@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.facebook.com/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#3b5998'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-facebook fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/pvrohin"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/rohin-siddhartha-019071183"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a><a class="social mx-1"  href="https://medium.com/@your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#00ab6c'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-medium fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.twitter.com/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1da1f2'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-twitter fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>
