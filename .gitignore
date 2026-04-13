@@ -6,4 +6,4 @@
 *.ai
 
 # IntelliJ
-.idea
+.idea.claude/
