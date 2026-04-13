@@ -21,12 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Dummy Project">
-  <meta property="og:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
-  <meta property="og:image" content="https://www.sketchappsources.com/resources/source-image/coo-app-concept-subgaurav.jpg">
+  <meta property="og:title" content="Particle Filter">
+  <meta property="og:description" content="Monte Carlo Particle Filter for 6-DOF robot pose estimation fusing IMU data with AprilTag observations, compared against EKF and VICON ground truth.">
+  <meta property="og:image" content="https://opengraph.githubassets.com/1/pvrohin/Particle-Filter">
 
-  <title>Dummy Project</title>
-  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+  <title>Particle Filter</title>
+  <meta name="description" content="Monte Carlo Particle Filter for 6-DOF robot pose estimation fusing IMU data with AprilTag observations, compared against EKF and VICON ground truth.">
 
   <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
 
@@ -76,7 +76,80 @@
 
 </nav>
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  
+  <div style="text-align: center;"><h1>Particle Filter</h1></div>
+
+<p>This project implements a <strong>Particle Filter (Sequential Monte Carlo)</strong> for 6-DOF robot pose estimation, developed as part of the RBE595 Robot Navigation course at <strong>Worcester Polytechnic Institute</strong>. It fuses <strong>IMU inertial data</strong> with <strong>AprilTag visual observations</strong> and is benchmarked against an Extended Kalman Filter (EKF) and VICON motion capture ground truth.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Why Particle Filter?</h2>
+
+<p>The Particle Filter makes <strong>no assumptions about the shape of the belief distribution</strong> — unlike the EKF, which requires Gaussian noise and linearized dynamics. By representing the posterior as a set of weighted samples (particles), it can handle <strong>multimodal distributions</strong> and highly nonlinear motion models, at the cost of higher computational demand.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Algorithm</h2>
+
+<p><strong>Initialization</strong> — 2,000 particles are sampled from a prior distribution over robot poses (position + orientation).</p>
+
+<p><strong>Prediction</strong> — Each particle is propagated forward independently using IMU measurements (accelerometer + gyroscope integration), adding process noise to maintain diversity.</p>
+
+<p><strong>Update (Weighting)</strong> — When an AprilTag is detected, the <strong>PnP solver</strong> produces a pose observation. Each particle is weighted by the likelihood of observing that measurement given its state.</p>
+
+<p><strong>Resampling</strong> — <strong>Low-variance resampling</strong> is applied to focus computational resources on high-probability regions of the state space, avoiding particle degeneracy.</p>
+
+<p><strong>Estimation</strong> — The final pose estimate is computed as the weighted mean of all particles.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Comparison: Particle Filter vs EKF</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Particle Filter</th>
+      <th>Extended Kalman Filter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Distribution assumption</td>
+      <td>Non-parametric</td>
+      <td>Gaussian</td>
+    </tr>
+    <tr>
+      <td>Handles multimodality</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Computational cost</td>
+      <td>Higher (2,000 particles)</td>
+      <td>Lower</td>
+    </tr>
+    <tr>
+      <td>Nonlinear handling</td>
+      <td>Exact (sample-based)</td>
+      <td>Approximate (Jacobian)</td>
+    </tr>
+    <tr>
+      <td>Accuracy (this project)</td>
+      <td>Comparable to EKF</td>
+      <td>Baseline</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Both methods were evaluated on 8 datasets (<code class="language-plaintext highlighter-rouge">studentdata0.mat</code> – <code class="language-plaintext highlighter-rouge">studentdata7.mat</code>) collected with a real robot equipped with an IMU and camera. RMSE metrics were computed against VICON ground truth for quantitative comparison.</p>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/Particle-Filter" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
 
 </div>
   </main>

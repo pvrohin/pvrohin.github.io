@@ -21,12 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Coding Like Vincent Van Gogh">
-  <meta property="og:description" content="Show some support by following me!">
-  <meta property="og:image" content="assets/Rohin.jpg">
+  <meta property="og:title" content="INS/GNSS Integration with UKF">
+  <meta property="og:description" content="INS and GNSS sensor fusion using the Unscented Kalman Filter with WGS84 Earth model — implemented in both feedforward and feedback architectures for robust n...">
+  <meta property="og:image" content="https://opengraph.githubassets.com/1/pvrohin/INSS-GNSS-Integration">
 
-  <title>Coding Like Vincent Van Gogh</title>
-  <meta name="description" content="Show some support by following me!">
+  <title>INS/GNSS Integration with UKF</title>
+  <meta name="description" content="INS and GNSS sensor fusion using the Unscented Kalman Filter with WGS84 Earth model — implemented in both feedforward and feedback architectures for robust n...">
 
   <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
 
@@ -76,7 +76,62 @@
 
 </nav>
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  
+  <div style="text-align: center;"><h1>INS/GNSS Integration with Unscented Kalman Filter</h1></div>
+
+<p>This project implements <strong>Inertial Navigation System (INS) and Global Navigation Satellite System (GNSS) integration</strong> using the <strong>Unscented Kalman Filter (UKF)</strong>, developed as part of the RBE595 Robot Navigation course at <strong>Worcester Polytechnic Institute</strong>. Two complementary filter architectures are implemented and compared.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Why UKF?</h2>
+
+<p>The navigation equations for INS/GNSS fusion are highly nonlinear — involving rotation matrices, Earth curvature corrections, and gravity models. The <strong>EKF</strong> approximates these with Jacobians, which can introduce significant linearization errors. The <strong>UKF</strong> instead uses <strong>sigma points</strong> (the Unscented Transform) to propagate the distribution through the true nonlinear function, achieving higher accuracy without requiring analytic derivatives.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Two Architectures</h2>
+
+<p><strong>Feedforward Architecture (12-state)</strong></p>
+
+<p>The INS propagates the full navigation solution independently. GNSS measurements are fused by the UKF to directly correct the current position, velocity, and orientation estimates. The state vector contains:</p>
+<ul>
+  <li>3D position (latitude, longitude, altitude)</li>
+  <li>3D velocity (North/East/Down)</li>
+  <li>Orientation (roll, pitch, yaw)</li>
+</ul>
+
+<p><strong>Feedback Architecture (15-state)</strong></p>
+
+<p>Extends the feedforward design with <strong>3 additional IMU bias states</strong> (gyroscope and accelerometer). The UKF estimates sensor biases alongside the navigation state, and the corrections are <strong>fed back</strong> into the INS mechanization loop to continuously compensate for drift — achieving better long-term accuracy.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Earth &amp; Gravity Models</h2>
+
+<p>Navigation accuracy depends on precise modeling of the Earth’s geometry and gravity field:</p>
+
+<ul>
+  <li><strong>WGS84 ellipsoidal Earth model</strong> — captures the oblate shape of the Earth for accurate latitude/longitude/altitude conversion</li>
+  <li><strong>Somigliana gravity model</strong> — computes surface gravity as a function of latitude, with vertical corrections for altitude</li>
+  <li><strong>Earth rotation compensation</strong> — angular velocity of the Earth is subtracted from gyroscope measurements to isolate true body rotation</li>
+</ul>
+
+<hr />
+
+<h2 style="text-align: center;">UKF Sigma Point Generation</h2>
+
+<p>The Julier symmetric sigma point scheme is used. For an n-dimensional state, 2n+1 sigma points are generated:</p>
+
+\[\mathcal{X}_0 = \hat{x}, \quad \mathcal{X}_i = \hat{x} \pm \sqrt{(n+\lambda)P_i}\]
+
+<p>These are propagated through the nonlinear process model, and the mean and covariance are recovered via weighted summation — capturing higher-order moments of the distribution.</p>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/INSS-GNSS-Integration" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
 
 </div>
   </main>

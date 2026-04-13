@@ -21,12 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PlaceHolder Project">
-  <meta property="og:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
-  <meta property="og:image" content="https://www.sketchappsources.com/resources/source-image/project-neon-groove-music-ui.png">
+  <meta property="og:title" content="Extended Kalman Filter">
+  <meta property="og:description" content="EKF-based robot pose estimation fusing IMU accelerometer/gyroscope data with AprilTag visual landmarks, validated against VICON motion capture ground truth.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/pvrohin/Extended-Kalman-Filter/master/EKF_vs_GroundTruth_vs_Observation_Model.png">
 
-  <title>PlaceHolder Project</title>
-  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+  <title>Extended Kalman Filter</title>
+  <meta name="description" content="EKF-based robot pose estimation fusing IMU accelerometer/gyroscope data with AprilTag visual landmarks, validated against VICON motion capture ground truth.">
 
   <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
 
@@ -76,7 +76,56 @@
 
 </nav>
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  
+  <div style="text-align: center;"><h1>Extended Kalman Filter</h1></div>
+
+<p>This project implements an <strong>Extended Kalman Filter (EKF)</strong> for robot state estimation by fusing data from an <strong>Inertial Measurement Unit (IMU)</strong> with visual pose estimates from <strong>AprilTag landmarks</strong>, developed as part of the RBE595 Robot Navigation course at <strong>Worcester Polytechnic Institute</strong>. Results are validated against VICON motion capture ground truth.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Why Extended?</h2>
+
+<p>Unlike the standard Kalman Filter, the EKF handles <strong>nonlinear system dynamics</strong>. IMU-based motion propagation and camera projection are both nonlinear operations, requiring <strong>Jacobian linearization</strong> at each timestep. Jacobians are computed analytically using <strong>SymPy</strong> for symbolic differentiation.</p>
+
+<hr />
+
+<h2 style="text-align: center;">System Architecture</h2>
+
+<p><strong>State Vector</strong> — 15 states: 3D position, 3D velocity, orientation (quaternion), and IMU biases (gyroscope + accelerometer).</p>
+
+<p><strong>Prediction Step (IMU)</strong> — At each IMU sample, the state is propagated forward by integrating accelerometer and gyroscope measurements. The state covariance is updated using the linearized Jacobian of the process model.</p>
+
+<p><strong>Update Step (Vision)</strong> — When an AprilTag observation is available, a <strong>Perspective-n-Point (PnP)</strong> algorithm estimates the camera pose. The residual between predicted and observed pose is used to correct the state estimate via the Kalman gain.</p>
+
+<p><strong>Sensor Fusion</strong> — The IMU provides high-frequency motion predictions between observations, while AprilTags supply low-frequency but accurate pose corrections, complementing each other’s weaknesses.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Results</h2>
+
+<div style="text-align: center;">
+  <p><strong>EKF vs Ground Truth vs Observation Model (3D Trajectory)</strong></p>
+  <img src="https://raw.githubusercontent.com/pvrohin/Extended-Kalman-Filter/master/EKF_vs_GroundTruth_vs_Observation_Model.png" alt="EKF vs ground truth vs observation model" style="max-width: 700px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+</div>
+
+<div style="text-align: center;">
+  <p><strong>Position Estimation Accuracy</strong></p>
+  <img src="https://raw.githubusercontent.com/pvrohin/Extended-Kalman-Filter/master/Estimated_vs_GroundTruth_Observation_Model.png" alt="Estimated vs ground truth" style="max-width: 700px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+</div>
+
+<div style="text-align: center;">
+  <p><strong>Orientation Tracking (Roll / Pitch / Yaw)</strong></p>
+  <img src="https://raw.githubusercontent.com/pvrohin/Extended-Kalman-Filter/master/Orientations_Tracking_Observation_Model.png" alt="Orientation tracking" style="max-width: 700px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+</div>
+
+<p>The EKF trajectory closely follows the VICON ground truth, outperforming the raw observation model by smoothing sensor noise and handling measurement dropouts.</p>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/Extended-Kalman-Filter" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
 
 </div>
   </main>

@@ -168,13 +168,3 @@ This project is an **autonomous fruit harvesting robot** developed as a collabor
   </div>
 </div>
 
----
-
-<h2 style="text-align: center;">Team</h2>
-
-<div style="text-align: center;">
-  <p>Rohin Siddhartha P.V. — perception and simulation</p>
-  <p>Dr Radhe Shyam Sharma — control and simulation</p>
-  <p>Sandra Cherussery — mechanical design and control</p>
-  <p><strong>Faculty:</strong> Dr. Laxmidar Behera, Dr. Santhakumar Mohan</p>
-</div>

@@ -107,4 +107,6 @@ exclude:
   - README.md
   - CONTRIBUTING.md
   - LICENSE
+  - CLAUDE.md
+  - projects_list_links.txt
   - "*.log"

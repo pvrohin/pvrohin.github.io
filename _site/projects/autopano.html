@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by yousinix
+  Free for personal and commercial use under the MIT license
+  https://github.com/yousinix/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AutoPano - Image Stitching">
+  <meta property="og:description" content="Automated image stitching pipeline combining classical computer vision and deep learning to generate seamless panoramas from overlapping images.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/pano_image_1.png">
+
+  <title>AutoPano - Image Stitching</title>
+  <meta name="description" content="Automated image stitching pipeline combining classical computer vision and deep learning to generate seamless panoramas from overlapping images.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/portfolYOU/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/portfolYOU/assets/css/style.css">
+
+</head>
+
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/portfolYOU/"><h5><b>Rohin Siddhartha</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/portfolYOU/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/about/">About</a>
+
+      <a class="nav-item nav-link " href="/portfolYOU/skills/">Skills</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <div style="text-align: center;"><h1>AutoPano: Image Stitching</h1></div>
+
+<p><strong>AutoPano</strong> is an automated panoramic image stitching system developed as part of a geometric computer vision course at <strong>Worcester Polytechnic Institute</strong>. The system merges multiple overlapping photographs into seamless wide-angle composites through two implementations: a <strong>classical computer vision pipeline</strong> (Phase 1) and a <strong>deep learning-based approach</strong> (Phase 2).</p>
+
+<hr />
+
+<h2 style="text-align: center;">Phase 1: Classical Pipeline</h2>
+
+<p>The classical pipeline processes image pairs through six sequential stages, from raw input to stitched panorama.</p>
+
+<hr />
+
+<h3 style="text-align: center;">Step 1: Corner Detection</h3>
+
+<p>Salient keypoints are identified using the <strong>Harris</strong> and <strong>Shi-Tomasi</strong> corner detection algorithms, locating geometrically distinctive regions across each image.</p>
+
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/corner_images_0.png" alt="Corner detection image 0" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/corner_images_1.png" alt="Corner detection image 1" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/corner_images_2.png" alt="Corner detection image 2" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/corner_images_3.png" alt="Corner detection image 3" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+
+<hr />
+
+<h3 style="text-align: center;">Step 2: Adaptive Non-Maximal Suppression (ANMS)</h3>
+
+<p>Raw corner responses are filtered using <strong>ANMS</strong> to retain only the most distinctive corners while enforcing even spatial distribution — preventing feature clustering near high-gradient regions.</p>
+
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/anms_images_0.png" alt="ANMS image 0" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/anms_images_1.png" alt="ANMS image 1" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/anms_images_2.png" alt="ANMS image 2" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/anms_images_3.png" alt="ANMS image 3" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+
+<hr />
+
+<h3 style="text-align: center;">Step 3: Feature Descriptor Extraction</h3>
+
+<p>An <strong>8×8 patch-based descriptor</strong> is extracted around each retained corner. Patches are Gaussian-smoothed and normalized to produce robust, comparison-ready feature vectors.</p>
+
+<div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/feature_descriptor_image.png" alt="Feature descriptor" style="max-width: 560px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+</div>
+
+<hr />
+
+<h3 style="text-align: center;">Step 4: Feature Matching</h3>
+
+<p>Correspondences between image pairs are established via <strong>ratio-test validation</strong>, filtering ambiguous matches by comparing distances to the best and second-best candidate descriptors.</p>
+
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/feature_matched_image_0.png" alt="Feature matches 0" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/feature_matched_image_1.png" alt="Feature matches 1" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+
+<hr />
+
+<h3 style="text-align: center;">Step 5: RANSAC Homography Estimation</h3>
+
+<p>A robust homography matrix is computed using <strong>RANSAC (Random Sample Consensus)</strong>, which iteratively identifies the largest set of inlier matches while rejecting outliers caused by noise or mismatches.</p>
+
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/ransac_image_0.png" alt="RANSAC inliers 0" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/ransac_image_1.png" alt="RANSAC inliers 1" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+
+<hr />
+
+<h3 style="text-align: center;">Step 6: Image Warping &amp; Final Panorama</h3>
+
+<p>The estimated homography warps images into a common coordinate frame. Blending resolves seams at overlap boundaries to produce the final seamless panorama.</p>
+
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/pano_image_0.png" alt="Panorama result 0" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoPano/master/Phase1/Code/Results/Train/Set1/pano_image_1.png" alt="Panorama result 1" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+
+<hr />
+
+<h2 style="text-align: center;">Phase 2: Deep Learning Approach</h2>
+
+<p>Phase 2 replaces the hand-crafted feature pipeline with a <strong>neural network trained to directly predict the homography</strong> between image pairs. Rather than detecting and matching keypoints explicitly, the network learns a mapping from image patches to the 4-point parametrization of the geometric transformation, enabling end-to-end differentiable training.</p>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/AutoPano" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Rohin Siddhartha</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.behance.net/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1769ff'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-behance fa-1x"></i>
+    </a><a class="social mx-1"  href="mailto:pvrohin@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.facebook.com/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#3b5998'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-facebook fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/pvrohin"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/rohin-siddhartha-019071183"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a><a class="social mx-1"  href="https://medium.com/@your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#00ab6c'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-medium fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.twitter.com/your_username"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1da1f2'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-twitter fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/yousinix/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>

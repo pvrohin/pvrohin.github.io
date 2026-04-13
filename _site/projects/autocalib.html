@@ -21,12 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Empty Project">
-  <meta property="og:description" content="This project has no image or showcase page, but it is still a beautiful project inside out!">
-  <meta property="og:image" content="assets/Rohin.jpg">
+  <meta property="og:title" content="AutoCalib - Camera Calibration">
+  <meta property="og:description" content="Camera intrinsic calibration from scratch using Zhang's method, SVD-based homography estimation, and Levenberg-Marquardt optimization with radial distortion ...">
+  <meta property="og:image" content="https://raw.githubusercontent.com/pvrohin/AutoCalib/master/Results/Reprojected_0.jpg">
 
-  <title>Empty Project</title>
-  <meta name="description" content="This project has no image or showcase page, but it is still a beautiful project inside out!">
+  <title>AutoCalib - Camera Calibration</title>
+  <meta name="description" content="Camera intrinsic calibration from scratch using Zhang's method, SVD-based homography estimation, and Levenberg-Marquardt optimization with radial distortion ...">
 
   <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
 
@@ -76,7 +76,62 @@
 
 </nav>
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  
+  <div style="text-align: center;"><h1>AutoCalib: Camera Calibration from Scratch</h1></div>
+
+<p><strong>AutoCalib</strong> is a complete implementation of <strong>camera intrinsic calibration</strong> built entirely from first principles using NumPy, OpenCV, and SciPy — without relying on OpenCV’s built-in calibration functions. The system recovers the camera intrinsic matrix and distortion coefficients from checkerboard images using <strong>Zhang’s calibration method</strong>.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Calibration Pipeline</h2>
+
+<p><strong>1. Corner Detection</strong> — Checkerboard corners are detected in 13 calibration images using <code class="language-plaintext highlighter-rouge">cv2.findChessboardCorners</code> with sub-pixel refinement via <code class="language-plaintext highlighter-rouge">cv2.cornerSubPix</code>.</p>
+
+<p><strong>2. Homography Estimation</strong> — For each image, a homography between the checkerboard world plane and the image plane is computed from scratch using <strong>SVD (Singular Value Decomposition)</strong>.</p>
+
+<p><strong>3. Intrinsic Matrix Estimation</strong> — Zhang’s method constructs a system of equations from the homographies, solved via SVD to recover the 5-parameter intrinsic matrix <strong>K</strong> (focal lengths, principal point, skew).</p>
+
+<p><strong>4. Extrinsic Recovery</strong> — Rotation and translation matrices are extracted from each homography using the calibrated <strong>K</strong>.</p>
+
+<p><strong>5. Non-Linear Optimization</strong> — All parameters (intrinsics + extrinsics + radial distortion coefficients k₁, k₂) are refined jointly using <strong>Levenberg-Marquardt</strong> via <code class="language-plaintext highlighter-rouge">scipy.optimize.least_squares</code>, minimizing reprojection error.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Reprojection Results</h2>
+
+<p>Red circles show the reprojected checkerboard corners overlaid on undistorted calibration images, validating the accuracy of the recovered camera parameters.</p>
+
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoCalib/master/Results/Reprojected_0.jpg" alt="Reprojected 0" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoCalib/master/Results/Reprojected_1.jpg" alt="Reprojected 1" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoCalib/master/Results/Reprojected_4.jpg" alt="Reprojected 4" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoCalib/master/Results/Reprojected_5.jpg" alt="Reprojected 5" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoCalib/master/Results/Reprojected_8.jpg" alt="Reprojected 8" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+  <div class="col-md-6" style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/pvrohin/AutoCalib/master/Results/Reprojected_11.jpg" alt="Reprojected 11" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+  </div>
+</div>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/AutoCalib" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
 
 </div>
   </main>

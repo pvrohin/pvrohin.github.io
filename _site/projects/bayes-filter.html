@@ -21,12 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Fabulous">
-  <meta property="og:description" content="Fabulous is a science-based app, incubated in Duke's Behavioral Economics Lab, that will help you build healthy rituals into your life, just like an elite at...">
-  <meta property="og:image" content="https://storage.googleapis.com/gd-wagtail-prod-assets/original_images/material_design_awards_inline_002.jpg">
+  <meta property="og:title" content="Bayes Filter">
+  <meta property="og:description" content="Discrete Bayes Filter implementation for probabilistic door-state estimation, demonstrating iterative prediction and correction steps for robot state estimat...">
+  <meta property="og:image" content="https://opengraph.githubassets.com/1/pvrohin/Bayes-Filter">
 
-  <title>The Fabulous</title>
-  <meta name="description" content="Fabulous is a science-based app, incubated in Duke's Behavioral Economics Lab, that will help you build healthy rituals into your life, just like an elite at...">
+  <title>Bayes Filter</title>
+  <meta name="description" content="Discrete Bayes Filter implementation for probabilistic door-state estimation, demonstrating iterative prediction and correction steps for robot state estimat...">
 
   <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
 
@@ -76,7 +76,108 @@
 
 </nav>
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  
+  <div style="text-align: center;"><h1>Bayes Filter</h1></div>
+
+<p>This project implements a <strong>discrete Bayes Filter</strong> for probabilistic state estimation, developed as part of the RBE595 Robot Navigation course at <strong>Worcester Polytechnic Institute</strong>. The system estimates whether a door is <strong>open or closed</strong> by fusing noisy sensor measurements with a probabilistic action model through iterative predict-and-correct cycles.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Algorithm</h2>
+
+<p>The Bayes Filter maintains a belief distribution over all possible states and updates it in two steps at each time instant:</p>
+
+<p><strong>Prediction Step</strong></p>
+
+<p>Given the robot’s action \(u_t\), the prior belief is propagated forward using the motion model:</p>
+
+\[\overline{bel}(x_t) = \sum_{x_{t-1}} p(x_t \mid u_t, x_{t-1}) \cdot bel(x_{t-1})\]
+
+<p>This marginalizes over all possible previous states, weighting each by its probability under the action model.</p>
+
+<p><strong>Correction Step</strong></p>
+
+<p>The predicted belief is then updated with the sensor measurement \(z_t\):</p>
+
+\[bel(x_t) = \eta \cdot p(z_t \mid x_t) \cdot \overline{bel}(x_t)\]
+
+<p>where \(\eta\) is a normalization constant ensuring the distribution sums to 1.</p>
+
+<hr />
+
+<h2 style="text-align: center;">State Estimation Scenarios</h2>
+
+<p>The filter was evaluated across three experimental scenarios:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Actions</th>
+      <th>Observations</th>
+      <th>Convergence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Push + open measurement</td>
+      <td>Push door</td>
+      <td>Sense open</td>
+      <td>~4 iterations to 99.99%</td>
+    </tr>
+    <tr>
+      <td>Do nothing + closed measurement</td>
+      <td>No action</td>
+      <td>Sense closed</td>
+      <td>~6 iterations to 99.99%</td>
+    </tr>
+    <tr>
+      <td>Mixed actions and noisy sensing</td>
+      <td>Push / no-op</td>
+      <td>Mixed</td>
+      <td>~10 iterations</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In all cases, the filter converges from a <strong>uniform prior</strong> to near-certain belief despite sensor noise, demonstrating the power of recursive Bayesian estimation.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Key Properties</h2>
+
+<ul>
+  <li><strong>State space</strong>: Binary (door open / door closed)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Action model</strong>: Probabilistic push effectiveness (e.g., P(open</td>
+          <td>push, closed) = 0.8)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Sensor model</strong>: Noisy binary observation (e.g., P(sense open</td>
+          <td>open) = 0.6)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>Initial belief</strong>: Uniform over all states</li>
+  <li><strong>Implementation</strong>: Pure NumPy in a Jupyter Notebook with inline visualizations</li>
+</ul>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/Bayes-Filter" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
 
 </div>
   </main>

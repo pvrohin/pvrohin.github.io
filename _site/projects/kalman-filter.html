@@ -21,12 +21,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Movies Project">
-  <meta property="og:description" content="This project has an individual showcase page, not just a direct link to the project site or repo. Now you have more space to describe your awesome project!">
-  <meta property="og:image" content="https://www.sketchappsources.com/resources/source-image/movie-badges-jurajjurik.png">
+  <meta property="og:title" content="Kalman Filter">
+  <meta property="og:description" content="6-state Kalman Filter for 3D position and velocity tracking of a lightweight object, evaluated across low-noise, high-noise, and velocity-measurement scenarios.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/pvrohin/Kalman-Filter/master/Result.png">
 
-  <title>The Movies Project</title>
-  <meta name="description" content="This project has an individual showcase page, not just a direct link to the project site or repo. Now you have more space to describe your awesome project!">
+  <title>Kalman Filter</title>
+  <meta name="description" content="6-state Kalman Filter for 3D position and velocity tracking of a lightweight object, evaluated across low-noise, high-noise, and velocity-measurement scenarios.">
 
   <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
 
@@ -76,21 +76,57 @@
 
 </nav>
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
-  <h1 id="the-movies-project">The Movies Project</h1>
+  <div style="text-align: center;"><h1>Kalman Filter</h1></div>
 
-<p>The Movies Project is something like <strong>Netflix</strong>, the only difference is that <strong>it’s not real</strong>! It doesn’t exist! I just created it to demonstrate how the <strong>showcase</strong> page looks like and how you can write whatever you want with full markdown support.</p>
+<p>This project implements a <strong>linear Kalman Filter</strong> for estimating the 3D position and velocity of a 27-gram object using noisy sensor measurements, developed as part of the RBE595 Robot Navigation course at <strong>Worcester Polytechnic Institute</strong>. The filter is evaluated across multiple data scenarios and compared against motion capture ground truth.</p>
 
-<p><img src="https://www.sketchappsources.com/resources/source-image/we-were-soldiers-landing-page-dbruggisser.jpg" alt="preview" /></p>
+<hr />
 
-<h2 id="search-movies">Search Movies</h2>
+<h2 style="text-align: center;">State Space</h2>
 
-<p><img src="https://www.sketchappsources.com/resources/source-image/microsoft-windows-10-virtual-keyboard-diogo-sousa.png" alt="search" /></p>
+<p>The filter tracks a <strong>6-dimensional state vector</strong> — three spatial coordinates and their corresponding velocities:</p>
 
-<p class="text-center">
-<a class="m-1 btn btn-outline-primary btn-2 " href="https://github.com/yousinix/portfolYOU">
-  Learn More
-</a>
-</p>
+\[\mathbf{x} = [x, y, z, \dot{x}, \dot{y}, \dot{z}]^\top\]
+
+<p>The system evolves according to the linear state-space model:</p>
+
+<p>\(\mathbf{x}_{k+1} = A\mathbf{x}_k + B\mathbf{u}_k + \mathbf{w}_k\)
+\(\mathbf{z}_k = H\mathbf{x}_k + \mathbf{v}_k\)</p>
+
+<p>where \(\mathbf{w}_k \sim \mathcal{N}(0, Q)\) is process noise and \(\mathbf{v}_k \sim \mathcal{N}(0, R)\) is measurement noise.</p>
+
+<hr />
+
+<h2 style="text-align: center;">Filter Steps</h2>
+
+<p><strong>Prediction:</strong>
+\(\hat{\mathbf{x}}_{k|k-1} = A\hat{\mathbf{x}}_{k-1|k-1}\)
+\(P_{k|k-1} = AP_{k-1|k-1}A^\top + Q\)</p>
+
+<p><strong>Update:</strong>
+\(K_k = P_{k|k-1}H^\top(HP_{k|k-1}H^\top + R)^{-1}\)
+\(\hat{\mathbf{x}}_{k|k} = \hat{\mathbf{x}}_{k|k-1} + K_k(\mathbf{z}_k - H\hat{\mathbf{x}}_{k|k-1})\)
+\(P_{k|k} = (I - K_kH)P_{k|k-1}\)</p>
+
+<hr />
+
+<h2 style="text-align: center;">Results</h2>
+
+<p>The plot below compares the Kalman-filtered trajectory against ground truth motion capture data across three scenarios: low noise, high noise, and velocity measurements.</p>
+
+<div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/pvrohin/Kalman-Filter/master/Result.png" alt="Kalman filter 3D trajectory result" style="max-width: 700px; width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;" />
+</div>
+
+<p>The filter successfully suppresses noise in all scenarios, closely tracking the true trajectory even under high measurement uncertainty.</p>
+
+<hr />
+
+<div style="text-align: center;">
+  <a href="https://github.com/pvrohin/Kalman-Filter" target="_blank" class="btn btn-dark">
+    View Code on GitHub
+  </a>
+</div>
 
 </div>
   </main>
