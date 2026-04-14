@@ -28,10 +28,10 @@
   <title>Blog</title>
   <meta name="description" content="I turn coffee :coffee: into code, use tabs over spaces and never broke production.">
 
-  <link rel="shortcut icon" type="image/x-icon" href="/portfolYOU/assets/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
 
   <!-- Theme style -->
-  <script src="/portfolYOU/assets/js/theme.js"></script>
+  <script src="/assets/js/theme.js"></script>
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/portfolYOU/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
 </head>
 
@@ -53,7 +53,7 @@
   <main class="flex-shrink-0 container mt-5">
     <nav class="navbar navbar-expand-lg navbar-themed">
 
-  <a class="navbar-brand" href="/portfolYOU/"><h5><b>Rohin Siddhartha</b></h5></a>
+  <a class="navbar-brand" href="/"><h5><b>Rohin Siddhartha</b></h5></a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-1x fa-bars text-themed"></i>
@@ -61,13 +61,15 @@
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-<a class="nav-item nav-link " href="/portfolYOU/projects/">Projects</a>
+<a class="nav-item nav-link " href="/projects/">Projects</a>
 
-      <a class="nav-item nav-link active" href="/portfolYOU/blog/">Blog</a>
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
 
-      <a class="nav-item nav-link " href="/portfolYOU/about/">About</a>
+      <a class="nav-item nav-link " href="/about/">About</a>
 
-      <a class="nav-item nav-link " href="/portfolYOU/skills/">Skills</a>
+      <a class="nav-item nav-link " href="/skills/">Skills</a>
+
+      <a class="nav-item nav-link " href="/resume/">Resume</a>
 
       
 
@@ -85,7 +87,7 @@
       <i class="fas fa-search"></i>
     </span>
   </div>
-  <button class="btn btn-outline-primary ml-1" onclick="location.href = '/portfolYOU/blog/tags';">
+  <button class="btn btn-outline-primary ml-1" onclick="location.href = '/blog/tags';">
     <i class="fas fa-tags"></i>
   </button>
 </div>
@@ -98,35 +100,66 @@
         resultsContainer: document.getElementById('results-container'),
         searchResultTemplate: '<a href="{url}" class="list-group-item list-group-item-action">{title}</a>',
         noResultsText: '<li class="list-group-item list-group-item-action disabled">No results found</li>',
-        json: '/portfolYOU/search.json'
+        json: '/search.json'
       })
 </script>
 <div class="card-group mt-2">
 
   
     <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/digital-minimalism" class="post card border border-">
-    <div class="card-body text-themed">
-      <h3 class="card-title">Digital Minimalism</h3>
+  <a href="/blog/how-far-along-are-we-in-realizing-truly-intelligent-robots" class="post card bg-primary">
+    <div class="card-body text-white">
+      <h3 class="card-title">How Far Along Are We in Realizing Truly Intelligent Robots?</h3>
       <p class="card-text">
         
-        <span class="badge badge-dark">Social Media</span>
+        <span class="badge badge-light text-primary">Robotics</span>
         
-        <span class="badge badge-dark">Minimalism</span>
+        <span class="badge badge-light text-primary">AI</span>
         
-        <span class="badge badge-dark">Technology</span>
+        <span class="badge badge-light text-primary">Computer Vision</span>
+        
+        <span class="badge badge-light text-primary">Deep Learning</span>
+        
+        <span class="badge badge-light text-primary">Reinforcement Learning</span>
         
       </p>
-      <p class="card-text">Minimalism is the art of knowing how much is just enough. Digital minimalism applies this idea to our personal technology. It’s the key to living a focused life in an increasingly noisy world.</p>
+      <p class="card-text">A look at the staggering complexity behind building robots like those shown in science fiction, and an honest assessment of where we stand today.</p>
     </div>
-    <div class="card-footer text-themed">
-      20 February 2019
+    <div class="card-footer text-white">
+      01 June 2020
     </div>
   </a>
 </div>
   
     <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/learn-react-js" class="post card border border-primary">
+  <a href="/blog/resources-for-deep-learning-and-robotics" class="post card bg-primary">
+    <div class="card-body text-white">
+      <h3 class="card-title">Resources for Deep Learning and Robotics</h3>
+      <p class="card-text">
+        
+        <span class="badge badge-light text-primary">Robotics</span>
+        
+        <span class="badge badge-light text-primary">Deep Learning</span>
+        
+        <span class="badge badge-light text-primary">Machine Learning</span>
+        
+        <span class="badge badge-light text-primary">Computer Vision</span>
+        
+        <span class="badge badge-light text-primary">Reinforcement Learning</span>
+        
+        <span class="badge badge-light text-primary">ROS</span>
+        
+      </p>
+      <p class="card-text">A curated, ordered guide for anyone from an electronics, electrical, or mechanical background looking to break into robotics and deep learning.</p>
+    </div>
+    <div class="card-footer text-white">
+      15 January 2020
+    </div>
+  </a>
+</div>
+  
+    <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
+  <a href="/blog/learn-react-js" class="post card border border-primary">
     <div class="card-body text-themed">
       <h3 class="card-title">Learn React.js in 5 minutes</h3>
       <p class="card-text">
@@ -147,7 +180,7 @@
 </div>
   
     <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/clean-coding" class="post card bg-info">
+  <a href="/blog/clean-coding" class="post card bg-info">
     <div class="card-body text-white">
       <h3 class="card-title">Clean Coding</h3>
       <p class="card-text">
@@ -166,7 +199,7 @@
 </div>
   
     <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/what-the-heck-is-a-callback" class="post card bg-danger">
+  <a href="/blog/what-the-heck-is-a-callback" class="post card bg-danger">
     <div class="card-body text-white">
       <h3 class="card-title">What the heck is a Callback?</h3>
       <p class="card-text">
@@ -187,22 +220,7 @@
 </div>
   
     <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/four-lessons-after-eleven-years-in-silicon-valley" class="post card bg-success">
-    <div class="card-body text-white">
-      <h3 class="card-title">4 Lessons After 11 Years in Silicon Valley</h3>
-      <p class="card-text">
-        
-      </p>
-      <p class="card-text">On the realities of opportunity, success, reputation, and relationships in tech.</p>
-    </div>
-    <div class="card-footer text-white">
-      09 May 2018
-    </div>
-  </a>
-</div>
-  
-    <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/github-flow" class="post card bg-primary">
+  <a href="/blog/github-flow" class="post card bg-primary">
     <div class="card-body text-white">
       <h3 class="card-title">GitHub Flow</h3>
       <p class="card-text">
@@ -221,12 +239,12 @@
 </div>
   
     <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/a-better-hello-world" class="post card bg-dark">
+  <a href="/blog/a-better-hello-world" class="post card bg-primary">
     <div class="card-body text-white">
       <h3 class="card-title">A better Hello World</h3>
       <p class="card-text">
         
-        <span class="badge badge-light text-dark">Software Development</span>
+        <span class="badge badge-light text-primary">Software Development</span>
         
       </p>
       <p class="card-text">A different “hello world” to demonstrate language features better.</p>
@@ -238,25 +256,7 @@
 </div>
   
     <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/do-not-go-gentle-into-that-good-night" class="post card bg-light">
-    <div class="card-body text-themed">
-      <h3 class="card-title">Do not go gentle into that good night</h3>
-      <p class="card-text">
-        
-        <span class="badge badge-dark">Poetry</span>
-        
-      </p>
-      <p class="card-text"></p>
-<p>Do not go gentle into that good night,<br> Old age should burn and rave at close of day;<br> Rage, rage against the dying<small><i>  read more...</i></small></p>
-    </div>
-    <div class="card-footer text-themed">
-      17 April 2016
-    </div>
-  </a>
-</div>
-  
-    <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/portfolYOU/blog/what-is-version-control" class="post card bg-secondary">
+  <a href="/blog/what-is-version-control" class="post card bg-secondary">
     <div class="card-body text-white">
       <h3 class="card-title">What is version control?</h3>
       <p class="card-text">
@@ -268,25 +268,6 @@
     </div>
     <div class="card-footer text-white">
       09 February 2016
-    </div>
-  </a>
-</div>
-  
-    <div class="col-lg-6 my-3 wow animated fadeIn" data-wow-delay=".15s">
-  <a href="https://blog.usejournal.com/how-to-undo-your-git-failure-b76e31ecac74" class="post card bg-warning" target="_blank">
-    <div class="card-body text-white">
-      <h3 class="card-title">How to undo your git failure?</h3>
-      <p class="card-text">
-        
-        <span class="badge badge-light text-warning">External Post</span>
-        
-        <span class="badge badge-light text-warning">Git</span>
-        
-      </p>
-      <p class="card-text">Using `git reflog` and `git reset` to save your code.</p>
-    </div>
-    <div class="card-footer text-white">
-      25 September 2015
     </div>
   </a>
 </div>
