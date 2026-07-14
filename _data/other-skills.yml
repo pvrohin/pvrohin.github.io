@@ -1,7 +1,27 @@
-# - name: Adobe Photoshop
-#   percentage: 95
-#   color: info
+- name: Research
+  percentage: 85
+  color: success
+  
+- name: MS Office
+  percentage: 90
+  color: success
 
-# - name: Adobe Illustrator
-#   percentage: 90
-#   color: success
+- name: Project Management
+  percentage: 80
+  color: success
+
+  - name: Leadership
+  percentage: 80
+  color: success
+  
+- name: Critical Thinking
+  percentage: 80
+  color: success
+
+- name: Decision-Making
+  percentage: 80
+  color: info
+  
+- name: Problem Solving
+  percentage: 70
+  color: info
