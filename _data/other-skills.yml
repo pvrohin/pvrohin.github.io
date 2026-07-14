@@ -10,7 +10,7 @@
   percentage: 80
   color: success
 
-  - name: Leadership
+- name: Leadership
   percentage: 80
   color: success
   
